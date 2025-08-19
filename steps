@@ -1,0 +1,8 @@
+mycompiler/
+│
+├── lexer.py        ← Tokenizer
+├── parser.py       ← Grammar rules and parser
+├── node.py         ← AST (Abstract Syntax Tree)
+├── codegen.py      ← Bytecode or intermediate code
+├── run.py          ← Main driver
+└── test.code       ← Example program to compile
