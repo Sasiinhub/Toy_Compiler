@@ -6,3 +6,36 @@ mycompiler/
 ├── codegen.py      ← Bytecode or intermediate code
 ├── run.py          ← Main driver
 └── test.code       ← Example program to compile
+
+
+2. Small improvements
+
+I’d suggest these tweaks for clarity and later VM work:
+
+mycompiler/
+│
+├── lexer.py         # Lexical analyzer (tokenizer)
+├── parser.py        # Parser (grammar + builds AST)
+├── ast.py           # AST node classes (instead of node.py, clearer name)
+├── codegen.py       # Code generation (to bytecode or intermediate form)
+├── vm.py            # (optional) Virtual Machine executor (later step)
+├── run.py           # Entry point: ties lexer → parser → codegen → vm
+├── tests/
+│   └── test.code    # Example program(s) written in our mini language
+└── README.md        # Document how to run the compiler
+
+3. Why this layout?
+
+lexer.py → small, focused file (regex-based tokenizer).
+
+parser.py → defines grammar + builds AST.
+
+ast.py → keeps AST nodes separate for reusability (cleaner than mixing in parser).
+
+codegen.py → converts AST → bytecode (or intermediate instructions).
+
+vm.py → runs bytecode (like JVM). You’ll add this later.
+
+run.py → command-line tool (python run.py test.code).
+
+tests/ → keep sample programs separate.
